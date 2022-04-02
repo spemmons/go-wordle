@@ -1,10 +1,9 @@
 jobs:
   build:
     docker:
-      - image: cimg/go:1.16
+      - image: cimg/go:1.18
     steps:
       - checkout
       - run: go version
-      - run: go mod download github.com/yuin/goldmark
       - run: go test ./... -coverprofile coverage.out
       - run: bash <(curl -s https://codecov.io/bash)
